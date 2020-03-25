@@ -4,6 +4,7 @@
   "description": "An API service for renting out movies",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +16,7 @@
   "author": "Eduardo Medina",
   "license": "MIT",
   "dependencies": {
+    "@hapi/joi": "^17.1.1",
     "express": "^4.17.1"
   }
 }

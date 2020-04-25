@@ -13,8 +13,8 @@ const Rental = mongoose.model('Rentals', new mongoose.Schema({
 
 function validateRental(rental) {
     const schema = Joi.object({
-        customerId: Joi.string().required(),
-        movieId: Joi.string().required(),
+        customerId: Joi.objectId().required(), //over Joi.string()
+        movieId: Joi.objectId().required(),
         //dates and rental fee are calculated on the server
     });
 

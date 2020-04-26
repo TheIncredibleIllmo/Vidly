@@ -5,6 +5,7 @@ const router = express.Router();
 const _ = require('lodash');
 const hash = require('../helpers/hash');
 const Joi = require('@hapi/joi');
+const jwt = require('jsonwebtoken');
 
 router.post('/', async (req, res) => {
     const { error } = validate(req.body);
@@ -16,7 +17,8 @@ router.post('/', async (req, res) => {
     const validPassword = await hash.comparePassword(req.body.password, user.password);
     if (!validPassword) return res.status(400).send('Invalid email or password.');
 
-    res.send(true);
+    const token = jwt.sign({ _id: user._id }, 'jwtPrivateKey');
+    res.send(token);
 });
 
 function validate(req) {

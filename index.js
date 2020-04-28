@@ -1,9 +1,17 @@
+
+const config = require('config');
 const Joi = require('@hapi/joi')
 Joi.objectId = require('joi-objectid')(Joi);
 
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+
+//Environment variables
+if (!config.get('jwtPrivateKey')) {
+    console.log("FATAL ERROR: jwtPrivateKey is not defined.");
+    process.exit(1);
+}
 
 //MongoDB connection
 mongoose.connect('mongodb://localhost:27017/vidly', {

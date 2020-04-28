@@ -4,6 +4,9 @@ const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
 const hash = require('../helpers/hash');
+const jwt = require('jsonwebtoken');
+const config = require('config');
+
 
 router.post('/', async (req, res) => {
     const { error } = validate(req.body);
@@ -16,7 +19,8 @@ router.post('/', async (req, res) => {
     user.password = await hash.hashPassword(user.password);
 
     await user.save();
-    res.send(_.pick(user, ['_id', 'name', 'email']));
+    const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
+    res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email']));
 });
 
 module.exports = router;

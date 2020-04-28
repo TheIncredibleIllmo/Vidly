@@ -5,6 +5,7 @@ const express = require('express');
 const router = express.Router();
 const Fawn = require('fawn');
 const mongoose = require('mongoose');
+
 Fawn.init(mongoose);
 
 router.get('/', async (req, res) => {

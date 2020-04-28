@@ -34,6 +34,7 @@ const auth = require('./routes/auth');
 //Middleware
 app.use(express.json());
 
+
 app.use('/vidly/api/', home);
 app.use('/vidly/api/genres', genres);
 app.use('/vidly/api/customers', customers);

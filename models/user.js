@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Joi = require('@hapi/joi');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
-//Collection and schema
-const User = mongoose.model('Users', new mongoose.Schema({
+const userShema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
@@ -21,8 +22,21 @@ const User = mongoose.model('Users', new mongoose.Schema({
         required: true,
         minlength: 5,
         maxlength: 1024,
-    }
-}));
+    },
+    isAdmin: Boolean //roles [], operations: []
+});
+
+userShema.methods.generateAuthToken = function () {
+    const tokenPayload = jwt.sign({
+        _id: this._id,
+        isAdmin: this.isAdmin
+    },
+        config.get('jwtPrivateKey'));
+    return tokenPayload;
+};
+
+//Collection and schema
+const User = mongoose.model('Users', userShema);
 
 function validateUser(user) {
 

@@ -4,9 +4,13 @@ const express = require('express');
 const router = express.Router();
 const _ = require('lodash');
 const hash = require('../helpers/hash');
-const jwt = require('jsonwebtoken');
-const config = require('config');
+const auth = require('../middleware/auth');
 
+router.get('/me', auth, async (req, res) => {
+    const user = await User.findById(req.user._id).select('-password');
+    if (!user) return res.status(400).send('User not found');
+    res.send(user);
+});
 
 router.post('/', async (req, res) => {
     const { error } = validate(req.body);
@@ -19,7 +23,7 @@ router.post('/', async (req, res) => {
     user.password = await hash.hashPassword(user.password);
 
     await user.save();
-    const token = jwt.sign({ _id: user._id }, config.get('jwtPrivateKey'));
+    const token = user.generateAuthToken();
     res.header('x-auth-token', token).send(_.pick(user, ['_id', 'name', 'email']));
 });
 

@@ -1,4 +1,4 @@
-
+const error = require('./middleware/error');
 const config = require('config');
 const Joi = require('@hapi/joi')
 Joi.objectId = require('joi-objectid')(Joi);
@@ -33,8 +33,6 @@ const auth = require('./routes/auth');
 
 //Middleware
 app.use(express.json());
-
-
 app.use('/vidly/api/', home);
 app.use('/vidly/api/genres', genres);
 app.use('/vidly/api/customers', customers);
@@ -42,8 +40,7 @@ app.use('/vidly/api/movies', movies);
 app.use('/vidly/api/rentals', rentals);
 app.use('/vidly/api/users', users);
 app.use('/vidly/api/auth', auth);
-
-
+app.use(error);
 
 
 const port = process.env.PORT || 3000;

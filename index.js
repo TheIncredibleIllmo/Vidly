@@ -1,5 +1,6 @@
 require('express-async-errors');
 const winston = require('winston');
+require('winston-mongodb');
 const error = require('./middleware/error');
 const config = require('config');
 const Joi = require('@hapi/joi')
@@ -11,6 +12,7 @@ const app = express();
 
 
 winston.add(new winston.transports.File({ filename: 'logfile.log' }));
+winston.add(new winston.transports.MongoDB({ db: 'mongodb://localhost:27017/vidly' }));
 
 //Environment variables
 if (!config.get('jwtPrivateKey')) {

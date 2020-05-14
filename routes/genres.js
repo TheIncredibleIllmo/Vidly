@@ -11,10 +11,11 @@ router.get('/:id', asyncMiddleware(async (req, res) => {
     res.send(genre);
 }));
 
-router.get('/', auth, asyncMiddleware(async (req, res) => {
+router.get('/', auth, async (req, res) => {
+    throw new Error('Could not get the genres.');
     const genres = await Genre.find().sort('name');
     res.send(genres);
-}));
+});
 
 router.post('/', auth, asyncMiddleware(async (req, res) => {
     const { error } = validate(req.body);

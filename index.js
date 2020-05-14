@@ -1,3 +1,5 @@
+require('express-async-errors');
+const winston = require('winston');
 const error = require('./middleware/error');
 const config = require('config');
 const Joi = require('@hapi/joi')
@@ -6,6 +8,9 @@ Joi.objectId = require('joi-objectid')(Joi);
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
+
+
+winston.add(new winston.transports.File({ filename: 'logfile.log' }));
 
 //Environment variables
 if (!config.get('jwtPrivateKey')) {

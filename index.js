@@ -10,15 +10,30 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
-process.on('uncaughtException', (ex) => {
-    console.log('WE GOT AN UNCAUGHT EXCEPTION');
-    winston.error(ex.message, ex);
+//For Sync code only!
+// process.on('uncaughtException', (ex) => {
+//     winston.error(ex.message, ex);
+//     process.exit(1);
+// });
+
+winston.handleExceptions(
+    new winston.transports.File({ filename: 'uncaughtExceptions.log' })
+);
+
+//For rejected promises
+process.on('unhandledRejection', (ex) => {
+    // winston.error(ex.message, ex);
+    // process.exit(1);
+    throw ex;
+
 });
 
 winston.add(new winston.transports.File({ filename: 'logfile.log' }));
 winston.add(new winston.transports.MongoDB({ db: 'mongodb://localhost:27017/vidly' }));
 
 //throw new Error('Something failed during startup');
+const p = Promise.reject(new Error('Somethinf failde miserably!'));
+p.then(() => console.log('Done'));
 
 //Environment variables
 if (!config.get('jwtPrivateKey')) {

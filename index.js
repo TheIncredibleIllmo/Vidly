@@ -10,9 +10,15 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 
+process.on('uncaughtException', (ex) => {
+    console.log('WE GOT AN UNCAUGHT EXCEPTION');
+    winston.error(ex.message, ex);
+});
 
 winston.add(new winston.transports.File({ filename: 'logfile.log' }));
 winston.add(new winston.transports.MongoDB({ db: 'mongodb://localhost:27017/vidly' }));
+
+//throw new Error('Something failed during startup');
 
 //Environment variables
 if (!config.get('jwtPrivateKey')) {
@@ -37,6 +43,7 @@ const movies = require('./routes/movies');
 const rentals = require('./routes/rentals');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const { log } = require('winston');
 
 //Middleware
 app.use(express.json());

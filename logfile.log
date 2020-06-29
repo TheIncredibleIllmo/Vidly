@@ -6,3 +6,20 @@
 {"level":"error","message":"Something failed duruing startupSomething failed duruing startup","stack":"Error: Something failed duruing startup\n    at Object.<anonymous> (C:\\Users\\EduardoMedina\\Documents\\CursoNode\\Vidly\\index.js:21:7)\n    at Module._compile (internal/modules/cjs/loader.js:1157:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1177:10)\n    at Module.load (internal/modules/cjs/loader.js:1001:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:900:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)\n    at internal/main/run_main_module.js:18:47"}
 {"level":"error","message":"Something failed during startupSomething failed during startup","stack":"Error: Something failed during startup\n    at Object.<anonymous> (C:\\Users\\EduardoMedina\\Documents\\CursoNode\\Vidly\\index.js:21:7)\n    at Module._compile (internal/modules/cjs/loader.js:1157:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1177:10)\n    at Module.load (internal/modules/cjs/loader.js:1001:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:900:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)\n    at internal/main/run_main_module.js:18:47"}
 {"level":"error","message":"Somethinf failde miserably!Somethinf failde miserably!","stack":"Error: Somethinf failde miserably!\n    at Object.<anonymous> (C:\\Users\\EduardoMedina\\Documents\\CursoNode\\Vidly\\index.js:29:26)\n    at Module._compile (internal/modules/cjs/loader.js:1157:30)\n    at Object.Module._extensions..js (internal/modules/cjs/loader.js:1177:10)\n    at Module.load (internal/modules/cjs/loader.js:1001:32)\n    at Function.Module._load (internal/modules/cjs/loader.js:900:14)\n    at Function.executeUserEntryPoint [as runMain] (internal/modules/run_main.js:74:12)\n    at internal/main/run_main_module.js:18:47"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
+{"message":"Listening on port 3000...","level":"info"}
+{"message":"Connected to MongoDb...","level":"info"}
